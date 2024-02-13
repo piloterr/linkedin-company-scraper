@@ -15,8 +15,8 @@ load_dotenv()
 TOKEN = os.getenv("API_TOKEN")
 MAX_WORKERS = int(os.getenv("MAX_WORKERS", 5))
 
-# Semaphore to limit to 5 concurrent requests per second
-semaphore = Semaphore(5)
+# Semaphore to limit concurrent requests per second
+semaphore = Semaphore(MAX_WORKERS)
 
 # Request to the API with rate limiting
 def get_company_info(slug):
